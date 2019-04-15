@@ -1,0 +1,14 @@
+boxbot: src/main.c src/key.c src/drow.c src/timer.c src/main.h system/boxbot.sh
+	@if [ ! -d system ] ; then \
+	echo "mkdir system" ; mkdir system; \
+	fi
+	gcc -o system/maked src/main.c
+
+system/boxbot.sh:
+	@echo "making boxbot.sh"
+	@if [ ! -d system ] ; then \
+	mkdir system; \
+	fi
+	@echo "#!/bin/bash" > system/boxbot.sh
+	@echo "./maked" >> system/boxbot.sh
+	@chmod +x system/boxbot.sh
